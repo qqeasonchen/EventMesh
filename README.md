@@ -65,6 +65,9 @@ You can start with the issues labeled with good first issue.
 ## License
 [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.html) Copyright (C) Apache Software Foundation
 
+## 动态
+在[Wiki](https://github.com/WeBankFinTech/DeFiBus/wiki)上汇总了相关动态和咨询，[点此处前往查看](https://github.com/WeBankFinTech/DeFiBus/wiki)
+
 ## Contacts
 WeChat group：
 
