@@ -68,6 +68,16 @@ You can start with the issues labeled with good first issue.
 ## 动态
 在[ Wiki ](https://github.com/WeBankFinTech/DeFiBus/wiki)上汇总了相关动态和资讯，[点此处前往查看](https://github.com/WeBankFinTech/DeFiBus/wiki)
 
+This diagram shows the architecture of EventMesh
+![architecture2](./docs/images/eventmesh.png)
+
+Key components:
+* eventmesh-broker:
+* eventmesh-sdk:
+* eventmesh-router:
+* eventmesh-governance:
+* eventmesh-acl:
+
 ## Contacts
 WeChat group：
 
