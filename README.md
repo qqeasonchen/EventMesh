@@ -85,6 +85,16 @@ Coming soon...
 ## License
 EventMesh is licensed under [Apache License](https://github.com/WeBankFinTech/DeFiBus/blob/master/LICENSE).
 
+This diagram shows the architecture of EventMesh
+![architecture2](./docs/images/eventmesh.png)
+
+Key components:
+* eventmesh-broker:
+* eventmesh-sdk:
+* eventmesh-router:
+* eventmesh-governance:
+* eventmesh-acl:
+
 ## Contacts
 WeChat group：
 
