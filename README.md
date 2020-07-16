@@ -82,7 +82,7 @@ This diagram shows the architecture of EventMesh
 ![architecture2](./docs/images/eventmesh.png)
 
 Key components:
-* eventmesh-broker:
+* eventmesh-eventbroker:
 * eventmesh-sdk:
 * eventmesh-router:
 * eventmesh-governance:
