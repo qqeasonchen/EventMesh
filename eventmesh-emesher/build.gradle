@@ -32,11 +32,6 @@ repositories {
     mavenCentral()
 }
 
-def env = 'dev'
-if (project.findProperty("env") instanceof String) {
-    env = project.property("env")
-}
-
 List defibus = [
     "com.webank.defibus:defibus-client:$defibus_version",
     "com.webank.defibus:defibus-common:$defibus_version"
@@ -72,26 +67,6 @@ dependencies {
     testCompile defibus, metrics, log4j2, sl4j, junit
 }
 
-//configurations.all {
-//    resolutionStrategy {
-//        force 'io.netty:netty-all:4.1.36.Final'
-//        force 'com.alibaba:fastjson:1.2.68'
-//        force 'com.fasterxml.jackson.core:jackson-databind:2.10.0'
-//        force 'com.fasterxml.jackson.core:jackson-core:2.10.0'
-//        force 'com.fasterxml.jackson.core:jackson-annotations:2.10.0'
-//    }
-//
-//    resolutionStrategy.cacheChangingModulesFor 0, TimeUnit.SECONDS
-//    resolutionStrategy.cacheDynamicVersionsFor 0, TimeUnit.SECONDS
-//
-//    exclude group:'io.netty',module:'netty-tcnative-boringssl-static'
-//
-//}
-//
-//tasks.withType(JavaCompile) {
-//    options.encoding = "UTF-8"
-//}
-//
 clean.doFirst {
     delete 'build'
     delete 'dist'
@@ -102,7 +77,41 @@ if (project.findProperty("buildNo") instanceof String) {
     versionString = project.version + '_' + project.property("buildNo")
 }
 
-task tar(overwrite: true, type: Tar, dependsOn: ['clean', 'jar']) {
+task zip(type: Zip, dependsOn: ['clean', 'jar']) {
+    extension = 'zip'
+    archiveName = project.name + '_' + versionString + '.' + extension
+    destinationDir = new File(projectDir, 'dist')
+
+    into('apps') {
+        from project.jar.getArchivePath()
+    }
+
+    into('bin') {
+        from 'bin'
+    }
+
+    into('conf') {
+        from "conf"
+    }
+
+    into('lib') {
+        from project.configurations.runtime
+        exclude '**/*.properties*'
+        exclude '**/*testng*.jar'
+        exclude '**/*powermock*.jar'
+        exclude '**/*mockito*.jar'
+        exclude '**/*junit*.jar'
+        exclude '**/*jacoco*.jar'
+        exclude '**/*log4j2.xml*'
+        exclude '**/spring-boot-devtools*.jar'
+    }
+
+    into('scripts') {
+        from "scripts"
+    }
+}
+
+task tar(type: Tar, dependsOn: ['clean', 'jar']) {
     extension = 'tar.gz'
     compression = Compression.GZIP
     archiveName = project.name + '_' + versionString + '.' + extension
@@ -137,15 +146,15 @@ task tar(overwrite: true, type: Tar, dependsOn: ['clean', 'jar']) {
     }
 }
 
-//uploadArchives {
-//    repositories {
-//        mavenDeployer {
-////            snapshotRepository(url: 'Your target repo address') {
-////                authentication(userName: 'Your user name', password: 'Your password')
-////            }
-////            repository(url: 'Your target repo address') {
-////                authentication(userName: 'Your user name', password: 'Your password')
-////            }
-//        }
-//    }
-//}
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            snapshotRepository(url: 'Your target repo address') {
+                authentication(userName: 'Your user name', password: 'Your password')
+            }
+            repository(url: 'Your target repo address') {
+                authentication(userName: 'Your user name', password: 'Your password')
+            }
+        }
+    }
+}
