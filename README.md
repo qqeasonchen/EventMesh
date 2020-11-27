@@ -65,38 +65,6 @@ You can start with the issues labeled with good first issue.
 ## License
 [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.html) Copyright (C) Apache Software Foundation
 
-## 动态
-在[ Wiki ](https://github.com/WeBankFinTech/DeFiBus/wiki)上汇总了相关动态和资讯，[点此处前往查看](https://github.com/WeBankFinTech/DeFiBus/wiki)
-
-This diagram shows the architecture of EventMesh
-![architecture2](./docs/images/eventmesh.png)
-
-Key components(open source soon):
-* eventmesh-eventbroker : an middleware to transmit events between event producers and consumers, support cloud native apps and microservices
-* eventmesh-sdk : support for popular open standard protocols and APIs, including REST/HTTP, AMQP, MQTT, Websocket and JMS, gRPC etc.
-* eventmesh-router : automatically routes events between applications and services connected to seperate event brokers
-* eventmesh-governance : governace layer for event producers and consumers
-* eventmesh-acl : security at various level of authentication, authorization and topic/channel access control
-* eventmesh-store : the store layer of Event-Mesh which implemented with [DeFiBus](https://github.com/WeBankFinTech/DeFiBus)(based on RocketMQ in financial scenario) or RocketMQ by default. We wish the store layeris a general solution and can use any store implement such as kafka, redis ,blockchain etc.
-
-## Quick Start
-1. Build and deploy eventmesh-store, see instruction ['eventmesh-store quickstart'](docs/en/instructions/eventmesh-store-quickstart.md) .
-2. Build and deploy eventmesh-emesher, see instruction ['eventmesh-emesher quickstart'](docs/en/instructions/eventmesh-emesher-quickstart.md).
-3. Run eventmesh-sdk-java demo, see instruction ['eventmesh-sdk-java quickstart'](docs/en/instructions/eventmesh-sdk-java-quickstart.md). 
-
-## License
-EventMesh is licensed under [Apache License](https://github.com/WeBankFinTech/DeFiBus/blob/master/LICENSE).
-
-This diagram shows the architecture of EventMesh
-![architecture2](./docs/images/eventmesh.png)
-
-Key components:
-* eventmesh-eventbroker:
-* eventmesh-sdk:
-* eventmesh-router:
-* eventmesh-governance:
-* eventmesh-acl:
-
 ## Contacts
 WeChat group：
 
